@@ -32,6 +32,7 @@ jobs:
         # with a capture group (around everything), but all other groups are non capturing, double escape's where necessary
         extraction_regex: "\"version\"\\s*:\\s*[\\'\"]((?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)(?:-(?:(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?:[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)[\\'\"]"
         capture_group: 1
+        source_file: "package.json"
 ```
 
 To make this work, the workflow must have the checkout action _before_ the tagging action.
