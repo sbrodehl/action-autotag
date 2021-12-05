@@ -1,23 +1,18 @@
 {
-  "name": "general-autotag",
-  "version": "1.0.0",
+  "name": "action-autotag",
+  "version": "2.0.0",
   "description": "Automatically generate new tags by extracting their names from a given source file",
-  "main": "main.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaliborc/action-general-autotag.git"
-  },
+  "main": "index.js",
   "keywords": [
     "actions",
     "github",
     "node",
     "setup"
   ],
-  "type": "module",
-  "author": "Jaliborc (forked from ButlerLogic)",
+  "author": "sbrodehl (forked from Jaliborc (forked from ButlerLogic))",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.0.0",
-    "@actions/github": "^1.0.0"
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
   }
 }

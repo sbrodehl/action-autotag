@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  autotag:
+    runs-on: ubuntu-latest
+    name: AutoTag Workflow
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: AutoTag Action Step
+        uses: ./ # Uses an action in the root directory
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          source_file: "package.json"
+          # this example uses the semver regex https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+          # with a capture group (around everything), but all other groups are non capturing, double escape's where necessary
+          extraction_regex: "\"version\"\\s*:\\s*[\\'\"]((?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)(?:-(?:(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?:[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)[\\'\"]"
+          capture_group: 1
