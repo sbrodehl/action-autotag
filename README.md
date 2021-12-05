@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: sbrodehl/action-autotag@2.0.0
+    - uses: sbrodehl/action-autotag@v2.0.0
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         # this example uses the semver regex https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
@@ -46,7 +46,7 @@ Without this, it is not possible to create a new tag.
 Make sure the autotag action looks like the following example:
 
 ```yaml
-- uses: sbrodehl/action-autotag@2.0.0
+- uses: sbrodehl/action-autotag@v2.0.0
   with:
     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     source_file: # the file in your repository that contains the version name
@@ -64,7 +64,7 @@ There are a few options to customize how the tag is created.
     By default, the action will tag versions exactly as matched in the source file. Prefixes and suffixes can be used to add text around the tag name. For example, if the current version is `1.0.0` and the `tag_format` is set to `v{version} (beta)`, then the tag would be labeled as `v1.0.0 (beta)`.
 
     ```yaml
-    - uses: sbrodehl/action-autotag@2.0.0
+    - uses: sbrodehl/action-autotag@v2.0.0
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         source_file: "package.json"
@@ -77,7 +77,7 @@ There are a few options to customize how the tag is created.
     This is the annotated commit message associated with the tag. By default, a changelog will be generated from the commits between the latest tag and the new tag (HEAD). This will override that with a hard-coded message.
 
     ```yaml
-    - uses: sbrodehl/action-autotag@2.0.0
+    - uses: sbrodehl/action-autotag@v2.0.0
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         source_file: "project.toc"
