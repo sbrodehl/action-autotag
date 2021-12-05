@@ -1,0 +1,32 @@
+name: 'Generalized Automatic Tags'
+description: 'Automatically generate new tags by extracting their names from a given source file.'
+author: 'Jaliborc'
+branding:
+  icon: 'tag'
+  color: 'orange'
+inputs:
+  source_file:
+    description: This is the file the action will look for the current tag name in.
+  extraction_regex:
+    description: This regex pattern will be applied on the source file to extract the current tag name. The first match will be taken. The deepest capture group will be used.
+  tag_format:
+    description: By default, no operation will be applied to the tag names. Changing the format allows to add prefixes and suffixes to them.
+    default: '{version}'
+    required: false
+  tag_message:
+    description: This is the annotated commit message associated with the tag. By default, a changelog will be generated from the commits between the latest tag and the new tag. This will override that with a hard-coded message.
+    required: false
+outputs:
+  tagname:
+    description: Returns the new tag value. Empty if a tag is not created.
+  tagsha:
+    description: The SHA of the new tag.
+  taguri:
+    description: The URI/URL of the new tag reference.
+  tagmessage:
+    description: The message applied to the tag reference (this is what shows up on the tag screen on Github).
+  version:
+    description: The version, as defined in the source file.
+runs:
+  using: 'node12'
+  main: 'main.js'
