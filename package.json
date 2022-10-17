@@ -1,6 +1,6 @@
 {
   "name": "action-autotag",
-  "version": "2.0.3",
+  "version": "2.0.2",
   "description": "Automatically generate new tags by extracting their names from a given source file",
   "main": "index.js",
   "keywords": [
