@@ -7,6 +7,8 @@ jobs:
   autotag:
     runs-on: ubuntu-latest
     name: AutoTag Workflow
+    outputs:
+        tagname: ${{ steps.autotag.outputs.tagname }}
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -23,7 +25,7 @@ jobs:
 
   update_tag:
     needs: [autotag]
-    if: ${{ needs.autotag.outputs.tagsha }}
+    if: ${{ needs.autotag.outputs.tagname }}
     name: Update the major tag to include the ${{ needs.autotag.outputs.tagname }} changes
     environment:
       name: releaseNewActionVersion
