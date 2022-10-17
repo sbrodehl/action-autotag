@@ -3,9 +3,6 @@ on:
     branches:
     - main
 
-permissions:
-  contents: write
-
 jobs:
   autotag:
     runs-on: ubuntu-latest
@@ -26,10 +23,12 @@ jobs:
 
   update_tag:
     needs: [autotag]
-    if: ${{ needs.autotag.outputs.sha }}
+    if: ${{ needs.autotag.outputs.tagsha }}
     name: Update the major tag to include the ${{ needs.autotag.outputs.tagname }} changes
     environment:
       name: releaseNewActionVersion
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Update the ${{ needs.autotag.outputs.tagname }} tag
