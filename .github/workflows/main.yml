@@ -29,4 +29,8 @@ jobs:
     name: Update Major Version Tag
     runs-on: ubuntu-latest
     steps:
-      - uses: nowactions/update-majorver@v1
+      - uses: sersoft-gmbh/running-release-tags-action@v2
+    with:
+      tag: 1.2.3
+      update-minor: false
+      create-release: false
