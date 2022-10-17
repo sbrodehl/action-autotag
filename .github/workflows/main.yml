@@ -27,8 +27,11 @@ jobs:
     needs: [autotag]
     if: ${{ needs.autotag.outputs.tagname }}
     name: Update Major Version Tag
-    uses: sersoft-gmbh/running-release-tags-action@v2
-    with:
-      tag: ${{ needs.autotag.outputs.tagname }}
-      update-minor: false
-      create-release: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sersoft-gmbh/running-release-tags-action@v2
+        with:
+          tag: ${{ needs.autotag.outputs.tagname }}
+          update-minor: false
+          create-release: false
+
