@@ -30,5 +30,5 @@ outputs:
   version:
     description: The version, as defined in the source file.
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
