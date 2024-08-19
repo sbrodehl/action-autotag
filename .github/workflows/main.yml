@@ -1,17 +1,17 @@
 on:
   push:
     branches:
-    - main
+      - main
 
 jobs:
   autotag:
     runs-on: ubuntu-latest
     name: AutoTag Workflow
     outputs:
-        tagname: ${{ steps.autotag.outputs.tagname }}
+      tagname: ${{ steps.autotag.outputs.tagname }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: AutoTag Action Step
         uses: ./ # Uses an action in the root directory
         id: autotag
@@ -29,10 +29,9 @@ jobs:
     name: Update Major Version Tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: sersoft-gmbh/running-release-tags-action@v2
         with:
           tag: ${{ needs.autotag.outputs.tagname }}
           update-minor: false
           create-release: false
-

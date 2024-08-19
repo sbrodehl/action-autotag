@@ -1,9 +1,9 @@
-name: 'Generalized Automatic Tags'
-description: 'Automatically generate new tags by extracting their names from a given source file.'
-author: 'sbrodehl'
+name: "Generalized Automatic Tags"
+description: "Automatically generate new tags by extracting their names from a given source file."
+author: "sbrodehl"
 inputs:
   GITHUB_TOKEN:
-    description: 'The GITHUB_TOKEN secret'
+    description: "The GITHUB_TOKEN secret"
   source_file:
     description: This is the file the action will look for the current tag name in.
   extraction_regex:
@@ -13,7 +13,7 @@ inputs:
     required: false
   tag_format:
     description: By default, no operation will be applied to the tag names. Changing the format allows to add prefixes and suffixes to them.
-    default: 'v{version}'
+    default: "v{version}"
     required: false
   tag_message:
     description: This is the annotated commit message associated with the tag. By default, a changelog will be generated from the commits between the latest tag and the new tag. This will override that with a hard-coded message.
@@ -30,5 +30,5 @@ outputs:
   version:
     description: The version, as defined in the source file.
 runs:
-  using: 'node16'
-  main: 'index.js'
+  using: "node20"
+  main: "index.js"
